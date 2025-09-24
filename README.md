@@ -30,3 +30,13 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 uvicorn app:app --reload --host 127.0.0.1 --port 8000
+```
+
+### Frontend (Electron desktop)
+_Open a new terminal/window:_
+```powershell
+cd frontend\electron
+npm install
+npm start
+
+
