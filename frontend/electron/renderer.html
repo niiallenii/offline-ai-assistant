@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Offline AI Assistant</title><style>body{font-family:system-ui;margin:24px} textarea{width:100%;height:100px}</style></head><body><h2>Offline AI Assistant (PoC)</h2><p>Start backend: <code>uvicorn backend.app:app --reload</code></p><textarea id='q' placeholder='Ask: show unpaid invoices'></textarea><br/><button onclick='send()'>Ask</button><pre id='out'></pre>
+    <script>
+function table(rows){
+  if(!rows || !rows.length) return "[]";
+  const keys = Object.keys(rows[0]);
+  const th = "<tr>"+keys.map(k=>`<th>${k}</th>`).join("")+"</tr>";
+  const tr = rows.map(r=>"<tr>"+keys.map(k=>`<td>${r[k]}</td>`).join("")+"</tr>").join("");
+  return `<table border="1" cellspacing="0" cellpadding="6">${th}${tr}</table>`;
+}
+
+async function send(){
+  const out = document.getElementById('out');
+  const message = document.getElementById('q').value;
+  out.innerHTML = "…thinking";
+  const r = await fetch(window.cfg.apiBase + '/chat',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({message})
+  });
+  const j = await r.json();
+  out.innerHTML = `<p><b>${j.answer}</b></p>${table(j.refs)}`;
+}
+</script>
+</body></html>

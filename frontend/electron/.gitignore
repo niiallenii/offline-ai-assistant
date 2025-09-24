@@ -1,0 +1,23 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node/Electron
+node_modules/
+npm-debug.log*
+yarn.lock
+dist/
+out/
+
+# Models / big binaries – don't commit GGUF models
+backend/models/
+*.gguf
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.log
+coverage/

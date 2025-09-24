@@ -1,0 +1,4 @@
+invoice_id,customer,total,paid,date
+INV-001,Acme Co,1200.50,true,2025-08-10
+INV-002,Globex Ltd,842.10,false,2025-08-12
+INV-003,Wayne Enterprises,199.99,true,2025-08-16
