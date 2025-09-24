@@ -38,5 +38,66 @@ _Open a new terminal/window:_
 cd frontend\electron
 npm install
 npm start
+```
+
+### 🧱 Project Structure
+```
+offline-business-ai-assistant/
+├─ backend/
+│  ├─ app.py                 # FastAPI local API (chat stub + examples)
+│  ├─ requirements.txt
+│  └─ data/sample/invoices.csv
+└─ frontend/
+   └─ electron/
+      ├─ package.json
+      ├─ main.js
+      ├─ preload.js          # points UI to http://127.0.0.1:8000
+      └─ renderer.html       # simple chat UI
+```
+
+### 🗺️ Roadmap & Milestones
+- **Phase 1 – Requirements & Architecture (10%)**
+  Model choice, offline constraints, data flows, UX and security plan.
+- **Phase 2 – Security & Infra (20%)**
+  App lock, local auth (PIN/YubiKey/Biometrics), encrypted storage (SQLCipher),
+  secrets handling, audit logs; packaging (PyInstaller/electron-builder).
+- **Phase 3 – Conversational AI (30%)**
+  Local LLM via llama.cpp or Ollama; prompt templates; offline STT/TTS
+  (whisper.cpp / Piper).
+- **Phase 4 – Business Logic & Integrations (20%)**
+  Workflows (CRM/reporting), adapters to local systems, RBAC.
+- **Phase 5 – Testing & Delivery (20%)**
+  Functional, security, and offline performance tests; docs; signed installers.
+```
+
+```
+## 🔐 Security Notes
+- 100% offline: no external network calls.
+- Encrypt sensitive data (recommend **SQLCipher**) and store secrets via OS keychain.
+- Local user auth + **RBAC**; session lock/timeout.
+- Tamper-evident audit logs (hash chain) and offline/signed updates.
+- Principle of least privilege for all local adapters/integrations.
+```
+
+```
+## 📸 Screenshots
+<p align="center">
+  <img src="docs/screenshot-1.png" width="600" alt="Desktop UI – chat view" />
+</p>
+
+> Add PNGs to `docs/` and reference them as above.
+```
+
+```
+## 📄 License
+This project is licensed under the **MIT License** – see [LICENSE](./LICENSE).
+```
+
+``` 
+## 🙋 Author
+**Allen Aryeetey** — Senior Network & Security Engineer | AI Enthusiast  
+Reach out on Upwork for collaboration on offline AI, security, and integrations.
+
+
 
 
